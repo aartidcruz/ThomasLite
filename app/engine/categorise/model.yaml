@@ -1,0 +1,58 @@
+title: categorise
+display: categorise
+category: Multiple Choice
+model:
+  title:
+    type: html
+    default: Which category?
+
+  prompt:
+    type: text
+    default: Drag to the correct category
+
+  buttonText:
+    type: text
+    default: A very long Shark Type of Sea Creature
+    display: Button CTA
+
+  categories:
+    type:
+      -
+        text:
+          type: html
+        correct:
+          type: boolean
+
+  answer:
+    text:
+      type: html
+      default: ""
+      display: Answer Text
+
+    correct:
+      type: text
+      default: That's correct!
+      display: Correct Reinforcement
+
+    incorrect:
+      type: text
+      default: Not quite...
+      display: Incorrect Reinforcement
+
+    takeaway:
+      type: text
+      default: ""
+      display: Core Message
+
+examples:
+  -
+    title: Which category does<br>this text belong to?
+    categories:
+      -
+        text: Fish are cool this is a really long sentence so long why is it so long
+        correct: true
+      -
+        text: Marine Mammal
+        correct: false
+    answer:
+      takeaway: Sharks are a group of fish characterized by a cartilaginous skeleton.

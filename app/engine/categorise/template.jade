@@ -1,0 +1,20 @@
+.content.text-center
+  .row
+    .block-ver-lg
+      h1.slide-up!= title
+
+    .block-md: .block-md.draggy-parent.relative
+
+      .category.fade-in.text-lg.droppy.droppy-top(data-correct=categories[0].correct)
+        != categories[0].text
+
+      .draggy.btn.btn-solid.selectable.starting-pos!= buttonText
+
+      .category.fade-in.text-lg.droppy.droppy-bottom(data-correct=categories[1].correct)
+        != categories[1].text
+        
+
+.slide-footer.slide-up
+  .slide-footer-prompt!= prompt
+  .slide-footer-touched
+    .btn.btn-muted.btn-done OK, I'm done
