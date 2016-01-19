@@ -1,9 +1,9 @@
 .content.text-center
   .row
-    .block-ver-lg
-      h1.slide-up!= title
+    .block-ver-md
+      h1.slide-up.tight!= title
 
-    .block-md: .block-md.draggy-parent.relative
+    .block-md.draggy-parent.relative
 
       .category.fade-in.text-lg.droppy.droppy-top(data-correct=categories[0].correct)
         != categories[0].text
