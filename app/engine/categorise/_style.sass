@@ -62,8 +62,6 @@
     &.droppy-bottom
       padding-top: 40px
 
-    &.incorrect
-      animation: shake 600ms 1
     &.active
       background-color: transparentize(#000, 0.6)
 
@@ -74,3 +72,15 @@
     .draggy-parent
       max-width: 600px
       margin: 0 auto
+
+  &.state-complete
+    .droppy-false.active
+      animation: rubber 600ms 1
+      background-color: transparentize(#000, 0.8)
+
+    .droppy-true.active
+      background-color: transparentize(#000, 0.6)
+
+    .droppy-true
+      background-color: transparentize(#000, 0.6)
+

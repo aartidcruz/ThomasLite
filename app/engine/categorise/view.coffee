@@ -71,12 +71,7 @@ class CategoriseView extends SlideView
 
 
   isCorrect: ->
-
-    if @currentDroppy.dataset.correct? is false
-      @currentDroppy.classList.add("incorrect")
-
-    else
-      @currentDroppy.dataset.correct? is true
+    @currentDroppy.dataset.correct? is true
 
 
 

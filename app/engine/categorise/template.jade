@@ -5,12 +5,18 @@
 
     .block-md.draggy-parent.relative
 
-      .category.fade-in.text-lg.droppy.droppy-top(data-correct=categories[0].correct)
+      .category.fade-in.text-lg.droppy.droppy-top(
+        data-correct=categories[0].correct
+        class="droppy-#{categories[0].correct}"
+      )
         != categories[0].text
 
       .draggy.btn.btn-solid.selectable.starting-pos!= buttonText
 
-      .category.fade-in.text-lg.droppy.droppy-bottom(data-correct=categories[1].correct)
+      .category.fade-in.text-lg.droppy.droppy-bottom(
+        data-correct=categories[1].correct
+        class="droppy-#{categories[1].correct}"
+      )
         != categories[1].text
         
 
