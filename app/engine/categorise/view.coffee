@@ -71,7 +71,13 @@ class CategoriseView extends SlideView
 
 
   isCorrect: ->
-    @currentDroppy.dataset.correct? is true
+
+    if @currentDroppy.dataset.correct? is false
+      @currentDroppy.classList.add("incorrect")
+
+    else
+      @currentDroppy.dataset.correct? is true
+
 
 
 module.exports = CategoriseView
