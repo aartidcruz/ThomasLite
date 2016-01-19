@@ -64,7 +64,6 @@ class CategoriseView extends SlideView
 
       currentDroppyCenterY -= draggy.offset.height / 2
 
-      console.log currentDroppyCenterY
 
       draggy.reset x: 0, y: currentDroppyCenterY
 
