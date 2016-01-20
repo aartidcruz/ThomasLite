@@ -12,7 +12,7 @@ model:
 
   buttonText:
     type: text
-    default: A very long Shark Type of Sea Creature
+    default: Button Text
     display: Button CTA
 
   categories:
@@ -47,9 +47,10 @@ model:
 examples:
   -
     title: Which category does<br>this text belong to?
+    buttonText: Shark
     categories:
       -
-        text: Fish are cool this is a really long sentence so long why is it so long
+        text: Fish
         correct: true
       -
         text: Marine Mammal
