@@ -11,7 +11,6 @@ class CategoriseView extends SlideView
 
   events: ->
     "iostap .btn-done": "showAnswer"
-    "iostap .btn-exit": "exit"
 
   afterShow: ->
     @setEl @el.querySelector(".draggy"), "draggy"
@@ -60,7 +59,7 @@ class CategoriseView extends SlideView
       currentDroppyCenterY = @currentDroppy.offsetHeight / 2
 
       if draggy.y < -draggy.el.offsetHeight / 2
-        currentDroppyCenterY = -currentDroppyCenterY
+        currentDroppyCenterY = -currentDroppyCenterY - 10
 
       currentDroppyCenterY -= draggy.offset.height / 2
 
@@ -73,6 +72,8 @@ class CategoriseView extends SlideView
   isCorrect: ->
     @currentDroppy.dataset.correct? is true
 
+  onRefresh: ->
+    @afterShow()
 
 
 module.exports = CategoriseView

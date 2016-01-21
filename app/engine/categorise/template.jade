@@ -3,17 +3,18 @@
     .block-ver-md
       h1.slide-up.tight!= title
 
-    .block-md.draggy-parent.relative
+    .block-md.draggy-parent
 
-      .category.fade-in.text-lg.droppy.droppy-top(
+      .category.block-dk.fade-in.text-lg.droppy.droppy-top(
         data-correct=categories[0].correct
         class="droppy-#{categories[0].correct}"
       )
         != categories[0].text
 
-      .draggy.btn.btn-solid.selectable.starting-pos!= buttonText
+      .draggy.starting-pos
+        .btn.btn-solid.btn-block.selectable.text-ellipsis!= buttonText
 
-      .category.fade-in.text-lg.droppy.droppy-bottom(
+      .category.block-dk.fade-in.text-lg.droppy.droppy-bottom(
         data-correct=categories[1].correct
         class="droppy-#{categories[1].correct}"
       )

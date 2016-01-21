@@ -2,8 +2,8 @@
 title: Thomas Lite
 config:
   colors:
-    background: "#46b4e9"
-    text: "#fff"
+    background: "#bada55"
+    text: "#333"
 
   pagination: false
   indicator: true

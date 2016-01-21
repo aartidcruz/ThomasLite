@@ -1,71 +1,31 @@
 .slide-categorise
-  .relative
+  .draggy-parent
     position: relative
 
   .draggy
-    padding-left: 50px !important
     z-index: 2
-    position: absolute
+    position: absolute !important
     max-width: 90%
     min-width: 70%
-    overflow: hidden
-    text-overflow: ellipsis
-    transition: all 300ms
-    &.active
-      transform: translate3d(0px, 0px, 0px) skew(0deg) scale(1.05) rotate(0deg)
-      background-color: #e5e5e5
-      &:before
-        background-color: #ccc
-      &:after
-        border-color: #e5e5e5
-
+    transition: 300ms
+    left: 50%
     &.starting-pos
-      top: 50%
-      transform: translate3d(-50%, -50%, 0)
-      left: 50%
-
-    &:before,
-    &:after
-      content: ""
-      position: absolute
-      -webkit-transition: inherit
-      transition: inherit
-      left: .8em
-      width: 20px
-      top: 50%
-
-    &:before
-      background-color: #ddd
-      height: 10px
-      margin-top: -5px
-
-    &:after
-      border-top: 2px solid #fff
-      border-bottom: 2px solid #fff
-      height: 2px
-      margin-top: -3px
-
-  .bg-dark
-    background-color: transparentize(#000, 0.8)
-    border-radius: 4px
-
-  .category
-    @extend .bg-dark
+      top: 50% !important
+      transform: translate3d(-50%, -50%, 0) !important
 
   .droppy
     padding: 30px 20px
     transition: background-color 300ms !important
-    border: 10px solid #46B4E9
-    border-radius: 14px
+    border-radius: 4px
+    margin: 10px
     &.droppy-top
       padding-bottom: 40px
     &.droppy-bottom
       padding-top: 40px
-
     &.active
       background-color: transparentize(#000, 0.6)
 
-  @media screen and (min-width: 767px)
+  @media screen and (min-width: $screen-md-max)
     h1
       font-size: 2.5em
 
