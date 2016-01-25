@@ -47,7 +47,7 @@ model:
 examples:
   -
     title: Which category does<br>this text belong to?
-    buttonText: Shark
+    buttonText: Shark shark  Shark shark Shark shark Shark shark Shark shark Shark shark Shark shark Shark shark Shark shark Shark shark Shark sharkShark shark Shark shark Shark shark Shark shark Shark shark Shark shark Shark shark
     categories:
       -
         text: Fish

@@ -6,6 +6,8 @@ class CategoriseView extends SlideView
 
   serialize: ->
     data = super
+    maxTextLength = if data.width > 900 then 30 else 1
+    data.buttonClass = if data.buttonText.length > maxTextLength then "btn-long" else ""
     data.categories = _.shuffle data.categories
     data
 
@@ -14,13 +16,15 @@ class CategoriseView extends SlideView
 
   afterShow: ->
     @setEl @el.querySelector(".draggy"), "draggy"
+    @setEl @el.querySelector(".draggy-btn"), "draggyBtn"
+    @setEl @el.querySelector(".draggy-parent"), "draggyParent"
     @setEl @el.querySelectorAll(".droppy"), "droppies"
     @createDraggy()
 
   # Create a new "draggy" , and listen to it's drag and drop events.
   createDraggy: ->
-    parent = @getEl("draggy").parentNode
-    height = parent.offsetHeight / 2
+    parent = @getEl("draggyParent")
+    height = parent.offsetHeight
 
     @draggy = new Draggy
       el: @getEl("draggy")
@@ -30,6 +34,7 @@ class CategoriseView extends SlideView
 
     @listenTo @draggy, "drag", @onDrag
     @listenTo @draggy, "drop", @onDrop
+    @updateDraggyHeight()
 
   onDrag: (draggy, isInitialDrag) ->
     draggy.el.classList.remove "starting-pos"
@@ -44,6 +49,7 @@ class CategoriseView extends SlideView
       y: draggy.y
       scale: 1.05
       transition: if isInitialDrag then "all 300ms" else "none"
+
 
   onDrop: (draggy, isReset) ->
     if isReset
@@ -68,12 +74,18 @@ class CategoriseView extends SlideView
 
     @setState "touched"
 
-
   isCorrect: ->
     @currentDroppy.dataset.correct? is true
 
   onRefresh: ->
     @afterShow()
+
+  updateDraggyHeight: (draggy) ->
+    draggyHeight = @getEl("draggy").offsetHeight
+    droppyHeight = draggyHeight - 20 + "px"
+
+    for droppy, i in @getEl "droppies"
+      droppy.style.height = droppyHeight
 
 
 module.exports = CategoriseView
