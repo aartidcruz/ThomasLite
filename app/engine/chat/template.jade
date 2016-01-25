@@ -1,0 +1,32 @@
+.block-hor-xl.block-ver-md.content-ver.text-md
+    if title
+      h2.fade-in!= title
+
+    .row
+      .col-lg-10.col-sm-12
+        h4.fade-in.block-ver-sm!= message.sender
+
+        .chat-msg.slide-up.delay-1.pull-left
+          .chat-msg-elli 
+            span.bullet.delay-1 &bullet;
+            span.bullet.delay-2 &bullet;
+            span.bullet.delay-3 &bullet;
+
+          .chat-msg-text!= message.content
+
+
+      h4.col-lg-12.col-sm-12.block-ver-sm.text-right.chat-responder.delay-4
+        != message.responder
+
+      for answer in allAnswers
+        .col-lg-10.col-lg-offset-2.col-sm-12
+          .chat-msg.pull-right.text-right.selectable(
+            class="delay-#{answer.delay} #{answer.isCorrect ? ' correct' : 'incorrect'}"
+          )
+            != answer.text
+
+.slide-footer.slide-up
+  .slide-footer-prompt!= prompt
+
+  .slide-footer-touched
+    .btn.btn-muted.btn-done OK, I'm done

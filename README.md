@@ -10,11 +10,13 @@ You will also need [Node], [Brunch] and [Bower] installed on your machine. [Scaf
 
 ### Running Thomas Lite
 
-You can clone Thomas Lite using brunch. This will run `npm install` and `bower install` for you.
+You can clone Thomas Lite using brunch.
 
 ```
 brunch new https://github.com/Creative-Licence-Digital/ThomasLite.git your-template
 ```
+
+You can ignore this step if you have already forked the repo via GitHub, and instead just run the `bower install` and `npm install` commands.
 
 Now you are ready to run Thomas...
 

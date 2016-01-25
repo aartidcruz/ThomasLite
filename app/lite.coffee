@@ -14,6 +14,12 @@ load = (name, path, apikey, done) ->
     el.setAttribute("href", fullPath)
 
   el.addEventListener "load", done
+  el.addEventListener "error", ->
+    document.write "
+      Remember to add your API key to app/assets/index.html.<br>
+      You can find it on the settings page in your account.
+    "
+
   document.getElementsByTagName("head")[0].appendChild(el)
 
 Lite =

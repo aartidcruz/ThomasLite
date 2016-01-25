@@ -1,0 +1,112 @@
+.slide-chat
+
+  h2
+    margin-bottom: 0.25em
+
+  .bullet
+    animation: bullet-pulse 600ms infinite alternate
+
+  .chat-msg-text,
+  .chat-msg-elli
+    min-height: 1em
+
+  .chat-msg-elli
+    position: absolute
+
+  .chat-msg-text,
+  .chat-responder
+    opacity: 0
+    transition: opacity 300ms
+
+  .chat-msg
+    padding: 1em
+    border-radius: 1em
+    position: relative
+    transition: all 300ms
+    min-width: 20px
+    min-height: 1
+    margin-bottom: 0.8em
+
+    &:after
+      content: ""
+      position: absolute
+      top: 100%
+      border: 0.3em solid transparent
+      transform-origin: top center
+      transform: translate3d(0, 0, 0)
+      transition: inherit
+
+    &.pull-left
+      background: rgba(#000, 0.6)
+      color: #fff
+
+      &:after
+        left: 1em
+        border-left-color: rgba(#000, 0.6)
+        border-top-color: rgba(#000, 0.6)
+
+    &.pull-right
+      color: #222
+      background: rgba(#fff, 0.8)
+      opacity: 0
+      transform: translate3d(0, 100%, 0) scale(1)
+
+      &:after
+        right: 1em
+        border-top-color: rgba(#fff, 0.8)
+        border-right-color: rgba(#fff, 0.8)
+
+    &.active
+      background: #fff
+      color: #333
+
+      &:after
+        border-top-color: #fff
+        border-right-color: #fff
+        margin-top: -1px
+
+  &.show-msg-true
+    .chat-msg-elli
+      display: none
+
+    .chat-msg-text,
+    .chat-responder
+      opacity: 1
+
+    .chat-msg.pull-right
+      opacity: 1
+      transform: translate3d(0, 0, 0) scale(1)
+
+      &.active
+        transform: translate3d(0, 0, 0) scale(1.1)
+        transition: all 300ms, transform 400ms $bounce-lg
+
+  &.state-complete
+    .chat-msg
+      transition-delay: 0ms !important
+
+      &.incorrect
+        color: #222
+        background: rgba(#fff, 0.8)
+        opacity: 0.5
+
+        &:after
+          border-top-color: rgba(#fff, 0.8)
+          border-right-color: rgba(#fff, 0.8)
+
+        &.active
+          animation: rubber 600ms 1 forwards
+
+      &.correct
+        transform: translate3d(0, 0, 0) scale(1.1)
+        background: #fff
+        color: #333
+
+        &:after
+          border-top-color: #fff
+          border-right-color: #fff
+
+@-webkit-keyframes bullet-pulse
+  to
+    opacity: 0.5
+    transform: translate3d(0, 4px, 0)

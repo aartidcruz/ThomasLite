@@ -1,0 +1,73 @@
+title: chat
+display: Chat
+category: Multiple Choice
+model:
+  title:
+    type: text
+
+  message:
+    content:
+      type: text
+    sender:
+      type: text
+    responder:
+      type: text
+      default: You
+
+  answers:
+    correct:
+      display: Correct Answer
+      type: text
+
+    incorrect:
+      display: Incorrect Answers
+      type:
+        -
+          type: text
+
+      min: 1
+      max: 2
+
+  answer:
+    text:
+      type: html
+      default: ""
+      display: Answer Text
+
+    correct:
+      type: text
+      default: That's correct!
+      display: Correct Reinforcement
+
+    incorrect:
+      type: text
+      default: Not quite...
+      display: Incorrect Reinforcement
+
+    takeaway:
+      type: text
+      default: ""
+      display: Core Message
+
+  prompt:
+    type: text
+    default: Tap the best reply to the message
+
+examples:
+  -
+    message:
+      sender: The customer asks
+      responder: What's your answer?
+      content: Which product is the cheapest?
+    answers:
+      correct: Product X is cheapest
+
+      incorrect:
+        - Product Y is cheapest
+        - Product Z is cheapest
+
+    answer:
+      takeaway: Product X is cheapest
+      text: >
+        It's important to help the customer understand that Product X is in
+        fact the cheapest product.
