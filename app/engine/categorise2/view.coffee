@@ -35,6 +35,11 @@ class Categorise2View extends SlideView
     @listenTo @draggy, "drop", @onDrop
     @updateDraggyHeight()
 
+    for el in @getEl "droppies"
+      el.classList.add("no-delay")
+    @draggy.el.classList.add("no-delay")
+
+
   onDrag: (draggy, isInitialDrag) ->
     @index = if draggy.y < 0 then 0 else 1
 

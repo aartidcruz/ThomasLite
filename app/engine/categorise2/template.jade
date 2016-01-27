@@ -1,25 +1,25 @@
 .content.text-center
   .row
     .block-ver-md
-      h1.slide-up.tight!= title
+      h1.slide-up.delay-3.tight!= title
 
     .block-md.draggy-parent
 
-      .category.fade-in.text-lg.droppy.droppy-top(
+      .category.slide-left.delay-4.text-lg.droppy.droppy-top(
         data-correct=categories[0].correct
         class="droppy-#{categories[0].correct}"
       )
         .droppy-child.block-dk.text-center
           p.category-text!= categories[0].text
 
-      .draggy
+      .draggy.fade-in.delay-6
         .btn.btn-solid.btn-block.selectable.draggy-btn(
           class=buttonClass
         )
           != buttonText
 
 
-      .category.fade-in.text-lg.droppy.droppy-bottom(
+      .category.slide-right.delay-4.text-lg.droppy.droppy-bottom(
         data-correct=categories[1].correct
         class="droppy-#{categories[1].correct}"
       )
