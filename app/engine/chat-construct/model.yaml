@@ -1,0 +1,52 @@
+title: chat-construct
+display: chat-construct
+category: Content|Game|Multiple Choice|Numbers|Relationships
+model:
+  title:
+    type: html
+    default: Answer your customer's question.
+
+  prompt:
+    type: text
+    default: Construct your respsonse
+
+  message:
+    content:
+      type: text
+    sender:
+      type: text
+    responder:
+      type: text
+      default: You
+
+  answer:
+    text:
+      type: html
+      default: ""
+      display: Answer Text
+
+    value:
+      type: number
+      display: Correct Value
+
+    correct:
+      type: text
+      default: That's correct!
+      display: Correct Reinforcement
+
+    incorrect:
+      type: text
+      default: Not quite...
+      display: Incorrect Reinforcement
+
+    takeaway:
+      type: text
+      default: ""
+      display: Core Message
+
+examples:
+  -
+    message:
+      sender: The customer asks
+      responder: What's your answer?
+      content: Which product is the cheapest?

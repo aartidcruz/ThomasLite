@@ -1,0 +1,21 @@
+.block-hor-xl.block-ver-md.content.text-md.slide-chat
+    if title
+      h2.fade-in!= title
+
+    .row
+      .col-lg-10.col-sm-12
+        h4.fade-in.block-ver-sm!= message.sender
+
+        .chat-msg.slide-up.delay-1.pull-left
+          .chat-msg-elli 
+            span.bullet.delay-1 &bullet;
+            span.bullet.delay-2 &bullet;
+            span.bullet.delay-3 &bullet;
+
+          .chat-msg-text!= message.content
+
+.slide-footer.slide-up
+  .slide-footer-prompt!= prompt
+
+  .slide-footer-touched
+    .btn.btn-muted.btn-done OK, I'm done
