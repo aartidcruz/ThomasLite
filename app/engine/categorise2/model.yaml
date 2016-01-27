@@ -12,10 +12,12 @@ model:
 
   buttonText:
     type: text
-    default: Button Text
-    display: Button CTA
+    default: ""
+    display: Answer
 
   categories:
+    min: 2
+    max: 2
     type:
       -
         text:
