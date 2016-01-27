@@ -49,7 +49,7 @@ model:
 examples:
   -
     title: Which category does<br>this text belong to?
-    buttonText: Shark shark  Shark shark Shark shark Shark sharkShark shark
+    buttonText: Shark
     categories:
       -
         text: Fish

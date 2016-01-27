@@ -6,7 +6,7 @@ class Categorise2View extends SlideView
 
   serialize: ->
     data = super
-    maxTextLength = if data.width > 900 then 30 else 1
+    maxTextLength = if data.width > 300 then 30 else 1
     data.buttonClass = if data.buttonText.length > maxTextLength then "btn-long" else ""
     data.categories = _.shuffle data.categories
     data
