@@ -105,9 +105,8 @@ class Categorise2View extends SlideView
 
   # Refresh transition delays
   resetCategories: (isRefresh) ->
-    @setState("prompt")
     for el in @getEl "droppies"
-      el.classList.remove("active", "no-delay")
+      el.classList.remove("no-delay")
     @draggy.el.classList.remove("no-delay")
 
 
@@ -124,7 +123,6 @@ class Categorise2View extends SlideView
 
 
   onRefresh: ->
-    super
     @afterShow()
     @resetCategories(true)
 

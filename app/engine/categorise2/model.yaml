@@ -58,4 +58,4 @@ examples:
         text: Marine Mammal
         correct: false
     answer:
-      takeaway: Sharks are a group of fish characterized by a cartilaginous skeleton.
+      text: Sharks are a group of fish characterized by a cartilaginous skeleton.
