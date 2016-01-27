@@ -6,10 +6,6 @@ model:
     type: html
     default: Which category?
 
-  prompt:
-    type: text
-    default: Drag to the correct category
-
   buttonText:
     type: text
     default: ""
@@ -45,6 +41,10 @@ model:
       type: text
       default: ""
       display: Core Message
+
+  prompt:
+    type: text
+    default: Drag to the correct category
 
 examples:
   -
