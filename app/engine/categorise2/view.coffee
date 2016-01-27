@@ -22,6 +22,12 @@ class Categorise2View extends SlideView
     @setEl @el.querySelectorAll(".droppy-child"), "droppyChild"
     @createDraggy()
 
+
+  resetCategories: (isRefresh) ->
+    @setState("prompt")
+    for el in @getEl "droppies"
+      el.classList.remove("active", "no-delay")
+
   # Create a new "draggy" , and listen to it's drag and drop events.
   createDraggy: ->
     parent = @getEl("draggyParent")
@@ -94,7 +100,9 @@ class Categorise2View extends SlideView
     @currentDroppy.dataset.correct? is true
 
   onRefresh: ->
+    super
     @afterShow()
+    @resetCategories(true)
 
   updateDraggyHeight: (draggy) ->
     elements = _.toArray(@getEl("droppies")).concat(@getEl("draggy"))
