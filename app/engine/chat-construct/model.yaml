@@ -1,6 +1,6 @@
 title: chat-construct
 display: chat-construct
-category: Content|Game|Multiple Choice|Numbers|Relationships
+category: Multiple Choice
 model:
   title:
     type: html
