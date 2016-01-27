@@ -36,7 +36,9 @@ class Categorise2View extends SlideView
     @updateDraggyHeight()
 
     for el in @getEl "droppies"
+      el.firstChild.style.height = ""
       el.classList.add("no-delay")
+
     @draggy.el.classList.add("no-delay")
 
 
