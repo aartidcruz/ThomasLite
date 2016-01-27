@@ -103,7 +103,7 @@ class Categorise2View extends SlideView
       droppy.firstChild.style.height = height + "px"
 
     @draggy.options.minY = -height - @draggy.offset.height / 2
-    @draggy.options.maxY =  height + @draggy.offset.height / 2
+    @draggy.options.maxY =  height + @draggy.offset.height
 
 
 module.exports = Categorise2View
