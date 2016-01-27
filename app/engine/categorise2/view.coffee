@@ -92,11 +92,12 @@ class Categorise2View extends SlideView
     @afterShow()
 
   updateDraggyHeight: (draggy) ->
-    draggyHeight = @getEl("draggy").offsetHeight
-    droppyHeight = draggyHeight * 2 + "px"
+    elements = _.toArray(@getEl("droppies")).concat(@getEl("draggy"))
+    height   = _.reduce elements, (m, e) ->
+      if m > e.offsetHeight then m else e.offsetHeight
 
     for droppy, i in @getEl "droppies"
-      droppy.style.minHeight = droppyHeight
+      droppy.firstChild.style.height = height + "px"
 
 
 module.exports = Categorise2View
