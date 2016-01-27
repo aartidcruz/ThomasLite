@@ -23,14 +23,6 @@ class Categorise2View extends SlideView
     @createDraggy()
 
 
-  resetCategories: (isRefresh) ->
-    @setState("prompt")
-
-    for el in @getEl "droppies"
-      el.classList.remove("active", "no-delay")
-
-    @draggy.el.classList.remove("no-delay")
-
   # Create a new "draggy" , and listen to it's drag and drop events.
   createDraggy: ->
     parent = @getEl("draggyParent")
@@ -43,15 +35,11 @@ class Categorise2View extends SlideView
     @listenTo @draggy, "drag", @onDrag
     @listenTo @draggy, "drop", @onDrop
 
-    for el in @getEl "droppies"
-      el.firstChild.style.height = ""
-      el.classList.add("no-delay")
-
-    @updateDraggyHeight()
-
-    @draggy.el.classList.add("no-delay")
+    @noDelay()
+    @updateDroppyHeight()
 
 
+  # Transform draggy
   onDrag: (draggy, isInitialDrag) ->
     @index = if draggy.y < 0 then 0 else 1
 
@@ -64,6 +52,7 @@ class Categorise2View extends SlideView
       transition: if isInitialDrag then "all 300ms" else "none"
 
 
+  # Place draggy in correct droppy
   onDrop: (draggy, isReset) ->
     if isReset
       @transformEl draggy.el,
@@ -88,6 +77,8 @@ class Categorise2View extends SlideView
 
     @setState "touched"
 
+
+  # Move droppies closer together after first drag
   moveDroppies: ->
     droppyUpdate = @draggy.offset.height / 2
 
@@ -99,15 +90,8 @@ class Categorise2View extends SlideView
         y: droppyUpdate
         transition: "all 300ms"
 
-  isCorrect: ->
-    @currentDroppy.dataset.correct? is true
-
-  onRefresh: ->
-    super
-    @afterShow()
-    @resetCategories(true)
-
-  updateDraggyHeight: (draggy) ->
+  # Update the Droppy height to contain the draggy height
+  updateDroppyHeight: (draggy) ->
     elements = _.toArray(@getEl("droppies")).concat(@getEl("draggy"))
     height   = _.reduce elements, (m, e) ->
       if m > e.offsetHeight then m else e.offsetHeight
@@ -117,6 +101,32 @@ class Categorise2View extends SlideView
 
     @draggy.options.minY = -height - @draggy.offset.height / 2
     @draggy.options.maxY =  height + @draggy.offset.height / 2
+
+
+  # Refresh transition delays
+  resetCategories: (isRefresh) ->
+    @setState("prompt")
+    for el in @getEl "droppies"
+      el.classList.remove("active", "no-delay")
+    @draggy.el.classList.remove("no-delay")
+
+
+  # Remove transition delays
+  noDelay: ->
+    for el in @getEl "droppies"
+      el.firstChild.style.height = ""
+      el.classList.add("no-delay")
+    @draggy.el.classList.add("no-delay")
+
+
+  isCorrect: ->
+    @currentDroppy.dataset.correct? is true
+
+
+  onRefresh: ->
+    super
+    @afterShow()
+    @resetCategories(true)
 
 
 module.exports = Categorise2View
