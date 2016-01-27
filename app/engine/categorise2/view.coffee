@@ -62,6 +62,8 @@ class Categorise2View extends SlideView
         transition: "all 300ms"
 
     else
+      @draggy.el.classList.add("draggy-drop")
+
       @moveDroppies()
 
       @currentDroppy = @getEl("droppies")[@index]

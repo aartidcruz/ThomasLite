@@ -14,11 +14,15 @@
 
   .draggy
     z-index: 2
-    max-width: 90%
+    max-width: 100%
     min-width: 70%
     transition: 300ms
-    margin: 0 auto
+    margin: 0 10px
     position: relative
+    &.draggy-drop
+      max-width: 90%
+      margin: 0 auto
+
 
   .droppy
     &.active
