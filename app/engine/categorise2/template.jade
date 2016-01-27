@@ -5,13 +5,12 @@
 
     .block-md.draggy-parent
 
-      .category.block-dk.fade-in.text-lg.droppy.droppy-top(
+      .category.fade-in.text-lg.droppy.droppy-top(
         data-correct=categories[0].correct
         class="droppy-#{categories[0].correct}"
       )
-        .table
-          .table-cell
-            p!= categories[0].text
+        .droppy-child.block-dk.text-center
+          p.category-text!= categories[0].text
 
       .draggy
         .btn.btn-solid.btn-block.selectable.draggy-btn(
@@ -20,15 +19,13 @@
           != buttonText
 
 
-      .category.block-dk.fade-in.text-lg.droppy.droppy-bottom(
+      .category.fade-in.text-lg.droppy.droppy-bottom(
         data-correct=categories[1].correct
         class="droppy-#{categories[1].correct}"
       )
-        .table
-          .table-cell
-            p!= categories[1].text
+        .droppy-child.block-dk.text-center
+          p.category-text!= categories[1].text
         
-      .answer.text-lg.text-bold
 
 .slide-footer.slide-up
   .slide-footer-prompt!= prompt

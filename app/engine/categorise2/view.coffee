@@ -18,8 +18,8 @@ class Categorise2View extends SlideView
     @setEl @el.querySelector(".draggy"), "draggy"
     @setEl @el.querySelector(".draggy-btn"), "draggyBtn"
     @setEl @el.querySelector(".draggy-parent"), "draggyParent"
-    @setEl @el.querySelector(".answer"), "answer"
     @setEl @el.querySelectorAll(".droppy"), "droppies"
+    @setEl @el.querySelectorAll(".droppy-child"), "droppyChild"
     @createDraggy()
 
   # Create a new "draggy" , and listen to it's drag and drop events.
@@ -29,8 +29,6 @@ class Categorise2View extends SlideView
 
     @draggy = new Draggy
       el: @getEl("draggy")
-      # minY: -height
-      # maxY: height
       lock: "x"
 
     @listenTo @draggy, "drag", @onDrag
@@ -38,10 +36,10 @@ class Categorise2View extends SlideView
     @updateDraggyHeight()
 
   onDrag: (draggy, isInitialDrag) ->
-    index = if draggy.y < -draggy.el.offsetHeight / 2 then 0 else 1
+    @index = if draggy.y < 0 then 0 else 1
 
     for droppy, i in @getEl "droppies"
-      droppy.classList.toggle "active", i is index
+      droppy.classList.toggle "active", i is @index
 
     @transformEl draggy.el,
       y: draggy.y
@@ -56,26 +54,31 @@ class Categorise2View extends SlideView
         transition: "all 300ms"
 
     else
-      index = if draggy.y < -draggy.el.offsetHeight / 2 then 0 else 1
+      @moveDroppies()
 
-      @currentDroppy = @getEl("droppies")[index]
-      currentDroppyCenterY = @currentDroppy.offsetHeight / 2
+      @currentDroppy = @getEl("droppies")[@index]
+      currentDroppyCenterY = (@currentDroppy.offsetHeight - @draggy.offset.height) / 2
 
-      if draggy.y < -draggy.el.offsetHeight / 2
-        currentDroppyCenterY = -currentDroppyCenterY - 10
+      if draggy.y < 0
+        currentDroppyCenterY = -currentDroppyCenterY
       else
-        currentDroppyCenterY = currentDroppyCenterY + draggy.offset.height + 10
+        currentDroppyCenterY = currentDroppyCenterY + draggy.offset.height
 
       currentDroppyCenterY -= draggy.offset.height / 2
       draggy.reset x: 0, y: currentDroppyCenterY
 
-
-
     @setState "touched"
 
-    answerText = @getEl("answer")
-    answerText.classList.toggle "fade"
-    answerText.innerHTML = @currentDroppy.innerHTML
+  moveDroppies: ->
+    droppyUpdate = @draggy.offset.height / 2
+
+    for droppy, i in @getEl "droppies"
+      unless droppy.classList.contains("droppy-top")
+        droppyUpdate = -droppyUpdate
+
+      @transformEl droppy,
+        y: droppyUpdate
+        transition: "all 300ms"
 
   isCorrect: ->
     @currentDroppy.dataset.correct? is true
@@ -85,10 +88,10 @@ class Categorise2View extends SlideView
 
   updateDraggyHeight: (draggy) ->
     draggyHeight = @getEl("draggy").offsetHeight
-    droppyHeight = draggyHeight - 20 + "px"
+    droppyHeight = draggyHeight * 2 + "px"
 
     for droppy, i in @getEl "droppies"
-      droppy.style.height = droppyHeight
+      droppy.style.minHeight = droppyHeight
 
 
 module.exports = Categorise2View
