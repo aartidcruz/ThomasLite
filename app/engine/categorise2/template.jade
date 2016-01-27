@@ -1,30 +1,29 @@
 .content.text-center
-  .row
-    .block-ver-md
-      h1.slide-up.delay-3.tight!= title
+  .block-md
+    h1.slide-up.delay-3.tight!= title
 
-    .block-md.draggy-parent
+  .block-md.draggy-parent
 
-      .category.slide-left.delay-4.text-lg.droppy.droppy-top(
-        data-correct=categories[0].correct
-        class="droppy-#{categories[0].correct}"
+    .category.slide-left.delay-4.text-lg.droppy.droppy-top(
+      data-correct=categories[0].correct
+      class="droppy-#{categories[0].correct}"
+    )
+      .droppy-child.block-dk.text-center
+        .content-ver!= categories[0].text
+
+    .draggy.fade-in.delay-6
+      .btn.btn-solid.btn-block.selectable.draggy-btn(
+        class=buttonClass
       )
-        .droppy-child.block-dk.text-center
-          .content-ver!= categories[0].text
-
-      .draggy.fade-in.delay-6
-        .btn.btn-solid.btn-block.selectable.draggy-btn(
-          class=buttonClass
-        )
-          != buttonText
+        != buttonText
 
 
-      .category.slide-right.delay-4.text-lg.droppy.droppy-bottom(
-        data-correct=categories[1].correct
-        class="droppy-#{categories[1].correct}"
-      )
-        .droppy-child.block-dk.text-center
-          .content-ver!= categories[1].text
+    .category.slide-right.delay-4.text-lg.droppy.droppy-bottom(
+      data-correct=categories[1].correct
+      class="droppy-#{categories[1].correct}"
+    )
+      .droppy-child.block-dk.text-center
+        .content-ver!= categories[1].text
         
 
 .slide-footer.slide-up
