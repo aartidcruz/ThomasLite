@@ -25,8 +25,11 @@ class Categorise2View extends SlideView
 
   resetCategories: (isRefresh) ->
     @setState("prompt")
+
     for el in @getEl "droppies"
       el.classList.remove("active", "no-delay")
+
+    @draggy.el.classList.remove("no-delay")
 
   # Create a new "draggy" , and listen to it's drag and drop events.
   createDraggy: ->
