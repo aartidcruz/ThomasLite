@@ -91,7 +91,9 @@ class CategoriseView extends SlideView
         transition: "all 300ms"
 
   # Update the Droppy height to contain the draggy height
-  updateDroppyHeight: (draggy) ->
+  updateDroppyHeight: ->
+    @draggy.getOffset()
+
     for el in @getEl "droppies"
       el.firstChild.style.height = ""
 
