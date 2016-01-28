@@ -1,7 +1,7 @@
 SlideView = require("views/slide")
 Draggy = require("views/components/draggy")
 
-class Categorise2View extends SlideView
+class CategoriseView extends SlideView
   template: require("./template")
 
   serialize: ->
@@ -127,4 +127,4 @@ class Categorise2View extends SlideView
     @resetCategories(true)
 
 
-module.exports = Categorise2View
+module.exports = CategoriseView
