@@ -104,10 +104,10 @@ class CategoriseView extends SlideView
 
 
   # Refresh transition delays
-  resetCategories: (isRefresh) ->
-    for el in @getEl "droppies"
-      el.classList.remove("no-delay")
-    @draggy.el.classList.remove("no-delay")
+  # resetCategories: (isRefresh) ->
+  #   for el in @getEl "droppies"
+  #     el.classList.remove("no-delay")
+  #   @draggy.el.classList.remove("no-delay")
 
 
   # Remove transition delays
@@ -124,7 +124,7 @@ class CategoriseView extends SlideView
 
   onRefresh: ->
     @afterShow()
-    @resetCategories(true)
+    # @resetCategories(true)
 
 
 module.exports = CategoriseView
