@@ -103,7 +103,7 @@ class CategoriseView extends SlideView
     @draggy.options.maxY =  height + @draggy.offset.height / 2
 
 
-  Refresh transition delays
+  #Refresh transition delays
   resetCategories: (isRefresh) ->
     for el in @getEl "droppies"
       el.classList.remove("no-delay")
