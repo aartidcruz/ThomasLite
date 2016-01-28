@@ -103,17 +103,17 @@ class CategoriseView extends SlideView
     @draggy.options.maxY =  height + @draggy.offset.height / 2
 
 
-  # Refresh transition delays
-  # resetCategories: (isRefresh) ->
-  #   for el in @getEl "droppies"
-  #     el.classList.remove("no-delay")
-  #   @draggy.el.classList.remove("no-delay")
+  Refresh transition delays
+  resetCategories: (isRefresh) ->
+    for el in @getEl "droppies"
+      el.classList.remove("no-delay")
+    @draggy.el.classList.remove("no-delay")
 
 
   # Remove transition delays
   noDelay: ->
     for el in @getEl "droppies"
-      # el.firstChild.style.height = ""
+      el.firstChild.style.height = ""
       el.classList.add("no-delay")
     @draggy.el.classList.add("no-delay")
 
@@ -124,7 +124,7 @@ class CategoriseView extends SlideView
 
   onRefresh: ->
     @afterShow()
-    # @resetCategories(true)
+    @resetCategories(true)
 
 
 module.exports = CategoriseView
