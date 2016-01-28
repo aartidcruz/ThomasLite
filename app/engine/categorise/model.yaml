@@ -55,7 +55,7 @@ examples:
         text: Fish
         correct: true
       -
-        text: Marine Mammal
+        text: Marine MammalSharks are a group of fish characterized by a cartilaginous skeleton.
         correct: false
     answer:
       text: Sharks are a group of fish characterized by a cartilaginous skeleton.

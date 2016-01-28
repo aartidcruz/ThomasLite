@@ -16,9 +16,6 @@ class CategoriseView extends SlideView
 
   afterShow: ->
     return if @draggy
-
-    @listenTo this, "resize", @onResize
-
     @setEl @el.querySelector(".draggy"), "draggy"
     @setEl @el.querySelector(".draggy-btn"), "draggyBtn"
     @setEl @el.querySelector(".draggy-parent"), "draggyParent"
@@ -101,7 +98,10 @@ class CategoriseView extends SlideView
       if m > e.offsetHeight then m else e.offsetHeight
 
     for droppy, i in @getEl "droppies"
-      droppy.firstChild.style.height = height + "px"
+      if droppy.offsetHeight < height
+        droppy.firstChild.style.height = height + "px"
+      else
+        droppy.firstChild.style.height = height + droppy.offsetHeight / 2 + "px"
 
     @draggy.options.minY = -height - @draggy.offset.height / 2
     @draggy.options.maxY =  height + @draggy.offset.height / 2
@@ -125,11 +125,6 @@ class CategoriseView extends SlideView
   isCorrect: ->
     @currentDroppy.dataset.correct? is true
 
-  onResize: ->
-    for el in @getEl "droppies"
-      el.firstChild.style.height = ""
-
-    @updateDroppyHeight(@draggy)
 
   onRefresh: ->
     super
