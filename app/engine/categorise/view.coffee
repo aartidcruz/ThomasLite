@@ -20,10 +20,7 @@ class CategoriseView extends SlideView
     @setEl @el.querySelector(".draggy-parent"), "draggyParent"
     @setEl @el.querySelectorAll(".droppy"), "droppies"
     @setEl @el.querySelectorAll(".droppy-child"), "droppyChild"
-
-    window.setTimeout (=>
-      @createDraggy()
-    ), 100
+    @createDraggy()
 
 
   # Create a new "draggy" , and listen to it's drag and drop events.
@@ -100,7 +97,7 @@ class CategoriseView extends SlideView
       if m > e.offsetHeight then m else e.offsetHeight
 
     for droppy, i in @getEl "droppies"
-      droppy.firstChild.style.height = height + "px"
+      droppy.firstChild.style.height = height + droppy.offsetHeight / 2 + "px"
 
     @draggy.options.minY = -height - @draggy.offset.height / 2
     @draggy.options.maxY =  height + @draggy.offset.height / 2
