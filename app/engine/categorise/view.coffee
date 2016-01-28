@@ -113,7 +113,7 @@ class CategoriseView extends SlideView
   # Remove transition delays
   noDelay: ->
     for el in @getEl "droppies"
-      el.firstChild.style.height = ""
+      # el.firstChild.style.height = ""
       el.classList.add("no-delay")
     @draggy.el.classList.add("no-delay")
 
