@@ -35,7 +35,7 @@ class CategoriseView extends SlideView
     @listenTo @draggy, "drag", @onDrag
     @listenTo @draggy, "drop", @onDrop
 
-    @noDelay()
+    @removeDelayTransitions()
     @updateDroppyHeight()
 
 
@@ -92,39 +92,39 @@ class CategoriseView extends SlideView
 
   # Update the Droppy height to contain the draggy height
   updateDroppyHeight: (draggy) ->
-    elements = _.toArray(@getEl("droppies")).concat(@getEl("draggy"))
-    height   = _.reduce elements, (m, e) ->
+    for el in @getEl "droppies"
+      el.firstChild.style.height = ""
+
+    height = _.reduce @getEl("droppies"), (m, e) ->
       if m > e.offsetHeight then m else e.offsetHeight
+    , @getEl("draggy").offsetHeight
 
     for droppy, i in @getEl "droppies"
-      droppy.firstChild.style.height = height + droppy.offsetHeight / 2 + "px"
+      droppy.firstChild.style.height = height + "px"
 
     @draggy.options.minY = -height - @draggy.offset.height / 2
     @draggy.options.maxY =  height + @draggy.offset.height / 2
 
 
   #Refresh transition delays
-  resetCategories: (isRefresh) ->
+  resetTransitions: (isRefresh) ->
     for el in @getEl "droppies"
       el.classList.remove("no-delay")
     @draggy.el.classList.remove("no-delay")
 
 
   # Remove transition delays
-  noDelay: ->
+  removeDelayTransitions: ->
     for el in @getEl "droppies"
-      el.firstChild.style.height = ""
       el.classList.add("no-delay")
     @draggy.el.classList.add("no-delay")
-
 
   isCorrect: ->
     @currentDroppy.dataset.correct? is true
 
-
   onRefresh: ->
     @afterShow()
-    @resetCategories(true)
+    @resetTransitions(true)
 
 
 module.exports = CategoriseView
