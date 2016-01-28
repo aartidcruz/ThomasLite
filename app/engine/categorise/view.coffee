@@ -15,7 +15,6 @@ class CategoriseView extends SlideView
     "iostap .btn-done": "showAnswer"
 
   afterShow: ->
-    return if @draggy
     @setEl @el.querySelector(".draggy"), "draggy"
     @setEl @el.querySelector(".draggy-btn"), "draggyBtn"
     @setEl @el.querySelector(".draggy-parent"), "draggyParent"
@@ -98,20 +97,17 @@ class CategoriseView extends SlideView
       if m > e.offsetHeight then m else e.offsetHeight
 
     for droppy, i in @getEl "droppies"
-      if droppy.offsetHeight < height
-        droppy.firstChild.style.height = height + "px"
-      else
-        droppy.firstChild.style.height = height + droppy.offsetHeight / 2 + "px"
+      droppy.firstChild.style.height = height + "px"
 
     @draggy.options.minY = -height - @draggy.offset.height / 2
     @draggy.options.maxY =  height + @draggy.offset.height / 2
 
 
   # Refresh transition delays
-  resetCategories: (isRefresh) ->
-    for el in @getEl "droppies"
-      el.classList.remove("no-delay")
-    @draggy.el.classList.remove("no-delay")
+  # resetCategories: (isRefresh) ->
+  #   for el in @getEl "droppies"
+  #     el.classList.remove("no-delay")
+  #   @draggy.el.classList.remove("no-delay")
 
 
   # Remove transition delays
@@ -127,14 +123,8 @@ class CategoriseView extends SlideView
 
 
   onRefresh: ->
-    super
-
-    if @draggy
-      @draggy.undelegateEvents()
-      @draggy = null
-
     @afterShow()
-    @resetCategories(true)
+    # @resetCategories(true)
 
 
 module.exports = CategoriseView
