@@ -20,7 +20,10 @@ class CategoriseView extends SlideView
     @setEl @el.querySelector(".draggy-parent"), "draggyParent"
     @setEl @el.querySelectorAll(".droppy"), "droppies"
     @setEl @el.querySelectorAll(".droppy-child"), "droppyChild"
-    @createDraggy()
+
+    window.setTimeout (=>
+      @createDraggy()
+    ), 100
 
 
   # Create a new "draggy" , and listen to it's drag and drop events.
